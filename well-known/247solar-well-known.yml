@@ -1,0 +1,65 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live anonymous GET of the named /.well-known/ path list against every host this record knows
+  (registrable domain + www). 247Solar has no API baseURL and no OpenAPI servers[] host, so the
+  corporate web host is the only probe surface. Every path returned 404; no pointer is emitted
+  because nothing is served. The 404 bodies are the WordPress/Divi theme 404 page, not documents.
+hosts:
+- host: 247solar.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: www.247solar.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+notes:
+  robots_txt: >-
+    https://247solar.com/robots.txt (HTTP 200) has a blanket "User-agent: * / Disallow:" and then
+    explicitly Allow-lists twelve named AI crawlers (ClaudeBot, anthropic-ai, GPTBot, ChatGPT-User,
+    OAI-SearchBot, Google-Extended, PerplexityBot, Applebot-Extended, Amazonbot, FacebookBot,
+    cohere-ai, Bytespider). The site is deliberately open to agents at the crawl layer while
+    publishing nothing machine-readable for them to consume.
+  llms_txt: /llms.txt returned 404 on both hosts.
+  mod_security: >-
+    The origin runs ModSecurity and answers a bare "Mozilla/5.0" User-Agent with 406 Not Acceptable.
+    A full browser User-Agent is served normally, so this is an ordinary edge policy, not a block.
